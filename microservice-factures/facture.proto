@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package facture;
+
+// Message principal
+message Facture {
+  string id = 1;          
+  string clientId = 2;    
+  string productId = 3;   
+  int32 quantity = 4;     
+  double total = 5;       
+  string date = 6;        
+  string status = 7;      
+}
+
+// Requests
+message CreateFactureRequest {
+  Facture facture = 1;
+}
+
+message GetFactureRequest {
+  string id = 1;
+}
+
+message ListFacturesRequest {}
+
+message GetFacturesByClientRequest {
+  string clientId = 1;
+}
+
+message GetFacturesByStatusRequest {
+  string status = 1; 
+}
+
+message DeleteFactureRequest {
+  string id = 1;
+}
+
+
+
+// Responses
+message CreateFactureResponse {
+  Facture facture = 1;
+}
+
+message GetFactureResponse {
+  Facture facture = 1;
+}
+
+message ListFacturesResponse {
+  repeated Facture factures = 1;
+}
+
+message GetFacturesByClientResponse {
+  repeated Facture factures = 1;
+}
+
+message GetFacturesByStatusResponse {
+  repeated Facture factures = 1;
+}
+
+message DeleteFactureResponse {
+  bool success = 1;
+}
+
+// Service
+service FactureService {
+  rpc CreateFacture (CreateFactureRequest) returns (CreateFactureResponse);
+  rpc GetFacture (GetFactureRequest) returns (GetFactureResponse);
+  rpc ListFactures (ListFacturesRequest) returns (ListFacturesResponse);
+  rpc GetFacturesByClient (GetFacturesByClientRequest) returns (GetFacturesByClientResponse);
+  rpc GetFacturesByStatus (GetFacturesByStatusRequest) returns (GetFacturesByStatusResponse);
+  rpc DeleteFacture (DeleteFactureRequest) returns (DeleteFactureResponse); // ✅ nouveau
+}
