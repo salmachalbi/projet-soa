@@ -1,0 +1,61 @@
+type Client {
+  id: String
+  name: String
+  email: String
+  phone: String
+}
+
+type Product {
+  id: String
+  name: String
+  price: Float
+  stock: Int
+  category: String
+  photo: String
+}
+
+type Facture {
+  id: String
+  clientId: String
+  productId: String
+  quantity: Int
+  total: Float
+  date: String
+  status: String
+}
+
+type Query {
+  # Clients
+  client(id: String!): Client
+  listClients: [Client]
+  searchClientByName(name: String!): [Client]
+
+  # Produits
+  product(id: String!): Product
+  listProducts: [Product]
+  searchProductByName(name: String!): [Product]
+  getProductsByCategory(category: String!): [Product]
+  getProductsOutOfStock: [Product]
+
+  # Factures
+  facture(id: String!): Facture
+  listFactures: [Facture]
+  getFacturesByClient(clientId: String!): [Facture]
+  getFacturesByStatus(status: String!): [Facture]
+}
+
+type Mutation {
+  # Clients
+  createClient(name: String!, email: String, phone: String): Client
+  updateClient(id: String!, name: String, email: String, phone: String): Client
+  deleteClient(id: String!): Boolean
+
+  # Produits
+  createProduct(id: String, name: String!, price: Float!, category: String!, stock: Int!, photo: String!): Product
+  updateProduct(id: String!, name: String, price: Float, stock: Int, category: String, photo: String): Product
+  deleteProduct(id: String!): Boolean
+
+  # Factures
+  createFacture(clientId: String!, productId: String!, quantity: Int!, total: Float!, date: String, status: String): Facture
+  deleteFacture(id: String!): Boolean
+}
