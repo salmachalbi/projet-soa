@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package client;
+
+message Client {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string phone = 4;
+}
+
+// Requests
+message CreateClientRequest {
+  Client client = 1;
+}
+
+message GetClientRequest {
+  string id = 1;
+}
+
+message UpdateClientRequest {
+  Client client = 1;
+}
+
+message DeleteClientRequest {
+  string id = 1;
+}
+
+message SearchClientByNameRequest {
+  string name = 1;
+}
+
+message ListClientsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+// Responses
+message CreateClientResponse {
+  Client client = 1;
+}
+
+message GetClientResponse {
+  Client client = 1; // un seul client avec toutes ses infos
+}
+
+message UpdateClientResponse {
+  Client client = 1;
+}
+
+message DeleteClientResponse {
+  bool success = 1;
+}
+
+message SearchClientByNameResponse {
+  repeated Client clients = 1; // plusieurs résultats
+}
+
+message ListClientsResponse {
+  repeated Client clients = 1; // liste complète
+  string next_page_token = 2;
+}
+
+// Service
+service ClientService {
+  rpc CreateClient(CreateClientRequest) returns (CreateClientResponse);
+  rpc GetClient(GetClientRequest) returns (GetClientResponse);
+  rpc UpdateClient(UpdateClientRequest) returns (UpdateClientResponse);
+  rpc DeleteClient(DeleteClientRequest) returns (DeleteClientResponse);
+  rpc SearchClientByName(SearchClientByNameRequest) returns (SearchClientByNameResponse);
+  rpc ListClients(ListClientsRequest) returns (ListClientsResponse);
+}
