@@ -1,20 +1,12 @@
 \# Projet SOA \& Microservices
 
-
-
 > Architecture microservices avec gRPC, REST, GraphQL et Kafka
 
 > Module : SoA et Microservices | A.U. 2025-26
 
-
-
 \---
 
-
-
 \## equipe
-
-
 
 | Membre | Role |
 
@@ -24,11 +16,7 @@
 
 | Fethi ben hlima | API Gateway + Integration Kafka  |
 
-
-
 \---
-
-
 
 \## Schema d Architecture
 
@@ -116,7 +104,7 @@ Topics Kafka :
 
 projet-soa/
 
-├── microservice-clients/          # Salma
+├── microservice-clients/         
 
 │   ├── server.js
 
@@ -126,7 +114,7 @@ projet-soa/
 
 │   └── client.js
 
-├── microservice-produits/         # Salma
+├── microservice-produits/         
 
 │   ├── server.js
 
@@ -146,7 +134,7 @@ projet-soa/
 
 │   └── facture.js
 
-├── api-gateway/                   # Binome
+├── api-gateway/                   
 
 │   ├── apiGateway.js
 
@@ -154,7 +142,7 @@ projet-soa/
 
 │   └── schema.gql
 
-├── kafka/                         # Binome
+├── kafka/                         
 
 │   ├── kafkaProducer.js
 
@@ -174,8 +162,6 @@ projet-soa/
 
 \---
 
-
-
 \## Prerequis
 
 
@@ -186,15 +172,9 @@ projet-soa/
 
 \- \*\*Postman\*\* -> https://www.postman.com
 
-
-
 \---
 
-
-
 \## Installation et Execution
-
-
 
 ```bash
 
@@ -236,19 +216,11 @@ cd api-gateway \&\& node apiGateway.js
 
 ```
 
-
-
 \## Endpoints REST
-
-
 
 Base URL : http://localhost:3000
 
-
-
 \### Clients
-
-
 
 | Methode | Endpoint | Description |
 
@@ -268,11 +240,7 @@ Base URL : http://localhost:3000
 
 
 
-
-
 \### Produits
-
-
 
 | Methode | Endpoint | Description |
 
@@ -295,12 +263,7 @@ Base URL : http://localhost:3000
 | GET | /products/outofstock | Produits hors stock |
 
 
-
-
-
 \### Factures
-
-
 
 | Methode | Endpoint | Description |
 
@@ -318,31 +281,13 @@ Base URL : http://localhost:3000
 
 | GET | /factures/client?clientId=X | Factures d'un client |
 
-
-
-
-
-Note : UpdateFacture non implemente - decision metier. En cas d'erreur, la facture est supprimee et recree pour eviter les incoherences comptables.
-
-
-
 \---
 
 \## GraphQL — POST http://localhost:3000/graphql
 
-
-
 \*\*Queries :\*\* client, listClients, searchClientByName, product, listProducts, searchProductByName, getProductsByCategory, getProductsOutOfStock, facture, listFactures, getFacturesByStatus, getFacturesByClient
 
-
-
 \*\*Mutations :\*\* createClient, updateClient, deleteClient, createProduct, updateProduct, deleteProduct, createFacture, deleteFacture
-
-
-
-\---
-
-
 
 \## gRPC (.proto)
 
@@ -358,11 +303,7 @@ Note : UpdateFacture non implemente - decision metier. En cas d'erreur, la factu
 
 | facture.proto | 50053 | CreateFacture, GetFacture, DeleteFacture, ListFactures, GetFacturesByStatus, GetFacturesByClient |
 
-
-
 \## Topics Kafka
-
-
 
 | Topic | Producteur | Consommateur | Events |
 
@@ -375,12 +316,7 @@ Note : UpdateFacture non implemente - decision metier. En cas d'erreur, la factu
 | factures-events | Microservice Factures | Microservice Produits | FACTURE\_CREATED, FACTURE\_DELETED |
 
 
-
-
-
 \## Bases de Donnees
-
-
 
 | Microservice | Type | Technologie | Justification |
 
@@ -393,12 +329,7 @@ Note : UpdateFacture non implemente - decision metier. En cas d'erreur, la factu
 | Factures | SQL | SQLite3 | Donnees financieres structurees, integrite |
 
 
-
-
-
 \## Ports utilises
-
-
 
 | Service | Port |
 
@@ -417,11 +348,7 @@ Note : UpdateFacture non implemente - decision metier. En cas d'erreur, la factu
 | Zookeeper | 2181 |
 
 
-
-
-
 \## Technologies utilisees
-
 
 
 \- \*\*Node.js\*\* - Runtime JavaScript
